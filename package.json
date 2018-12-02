@@ -1,0 +1,23 @@
+{
+  "name": "aoc2k18",
+  "version": "1.0.0",
+  "description": "Code for AOC2k18",
+  "main": "index.js",
+  "dependencies": {
+    "md5": "^2.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DrJest/aoc2k18.git"
+  },
+  "author": "DrJest",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DrJest/aoc2k18/issues"
+  },
+  "homepage": "https://github.com/DrJest/aoc2k18#readme"
+}

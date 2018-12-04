@@ -1,11 +1,11 @@
 const fs = require('fs');
-const input = fs.readFileSync('input-3.txt').toString().replace(/\r/g, '').split('\n');
+const input = fs.readFileSync('input-3.txt').toString().split('\n').map(l => l.trim());
 
 const map = [];
 
 for(let s of input) {
-  let d = s.replace(/[#@:]/g, '').replace(/[x,]/, ' ').split(/[ x]+/).map(x=>parseInt(x)),
-      id = d[0],
+  let d = s.slice(1).replace(/[^\d]/g, ' ').split(/\s+/).map(Number)
+  let id = d[0],
       x = d[1],
       y = d[2],
       w = d[3],
@@ -40,6 +40,9 @@ for(let j in map) {
 
 console.log(overlap)
 
-d = d.sort((a,b) => a-b).filter((i,p) => i !== p+1);
+let free = d.sort((a,b) => a-b).reduce((a,v,i) => {
+  (v !== i+1) && (a === null) && (a = (v+i)/2);
+  return a;
+}, null);
 
-console.log(d[0]-1)
+console.log(free);

@@ -13,11 +13,8 @@ for(let s of input) {
   for(let j = y; j < y + h; ++j) {
     map[j] = map[j] || [];
     for(let i = x; i < x + w; ++i) {
-      map[j][i] = map[j][i] || {
-        ids: [],
-        count: 0
-      };
-      map[j][i].ids.push(id);
+      map[j][i] = map[j][i] || [];
+      map[j][i].push(id);
       map[j][i].count++;
     }
   }
@@ -27,9 +24,9 @@ let overlap = 0, d = [];
 
 for(let j in map) {
   for(let i in map[j]) {
-    if(map[j][i].count > 1) {
+    if(map[j][i].length > 1) {
       overlap++;
-      map[j][i].ids.forEach(id => {
+      map[j][i].forEach(id => {
         if(d.indexOf(id) === -1) {
           d.push(id);
         }

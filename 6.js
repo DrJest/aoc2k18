@@ -18,14 +18,17 @@ for(let i of pts) {
   if(i.y>yMax) yMax = i.y
 }
 
+let xMin = -xMax, yMin = -yMax;
+xMax *= 2;
+yMax *= 2;
 let matrix = [];
 
-for(let j = -yMax; j < yMax; ++j) {
+for(let j = yMin; j < yMax; ++j) {
   matrix[j] = matrix[j] || [];
 }
 
-for(let y = -yMax; y < yMax; ++y) {
-  for(let x = -xMax; x < xMax; ++x) {
+for(let y = yMin; y < yMax; ++y) {
+  for(let x = xMin; x < xMax; ++x) {
     matrix[y][x] = {
       d: Infinity,
       c: []
@@ -60,12 +63,12 @@ for(let y = 0; y < yMax; ++y) {
 let counts = {};
 let isEdge = [];
 
-for(let j = -yMax; j < yMax; ++j) {
-  for(let i = -xMax; i < xMax; ++i) {
-    let c = matrix[j][i].c;
+for(let y = yMin; y < yMax; ++y) {
+  for(let x = xMin; x < xMax; ++x) {
+    let c = matrix[y][x].c;
     for(let p of c) {
       if(c.length === 1) {
-        if(i === -xMax || j === -yMax || i === xMax || j === yMax) isEdge.push(p)
+        if(x === xMin || y === yMin || x === xMax || y === yMax) isEdge.push(p)
         counts[ p ] = (counts[ p ] || 0) + 1;
       }
     }

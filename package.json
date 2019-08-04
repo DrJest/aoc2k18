@@ -4,7 +4,8 @@
   "description": "Code for AOC2k18",
   "main": "index.js",
   "dependencies": {
-    "md5": "^2.2.1"
+    "topological-sort": "^0.3.0",
+    "tsort": "0.0.1"
   },
   "devDependencies": {},
   "scripts": {
